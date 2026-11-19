@@ -1,7 +1,9 @@
 # OverNight — actualización de la copia original
 
 - [x] Auditar el ZIP sin ejecutar código importado y documentar funciones, riesgos y requisitos.
-- [ ] Presentar auditoría y acordar continuación segura en la copia de trabajo.
+- [x] Presentar auditoría y acordar continuación segura en la copia de trabajo.
+- [ ] Aislar por completo conexiones y pruebas de producción; documentar servicios de la copia.
+- [ ] Documentar antes de importar datos el alcance, exclusiones, recuperación del director e integridad.
 - [ ] Importar fielmente páginas, panel, componentes y recursos originales.
 - [ ] Conectar Lovable Cloud y ampliar esquema/autorización sin afectar al original.
 - [ ] Ampliar accesos y personal, rangos independientes y permisos individuales.
@@ -9,4 +11,4 @@
 - [ ] Profundizar la sección del fundador con hechos existentes y conservar la silueta.
 - [ ] Importar registros, usuarios y archivos existentes — pendiente de exportaciones.
 - [ ] Ejecutar pruebas reales de los 25 escenarios y entregar resultados.
-- [ ] Trasladar cambios a producción — solo con autorización explícita.
+- [ ] Trasladar cambios a producción — bloqueado: no autorizado; trabajar exclusivamente en esta copia.
