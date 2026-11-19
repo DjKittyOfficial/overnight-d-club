@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Working-copy migration rules
+
+- Extend the audited archive's existing TanStack application rather than introducing a second app; this preserves existing routes and production capabilities.
+- Track each imported capability and its verification in the migration ledger; missing data and external configuration must not be mistaken for completed functionality.
+- Keep the target's pinned TanStack packages when merging dependencies; generated routing and hosted runtime depend on the target's compatible versions.

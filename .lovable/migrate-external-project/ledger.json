@@ -1,0 +1,20 @@
+{
+  "source": "code-archive",
+  "phase": "audit",
+  "capabilities": [
+    {"capability":"Application code and visual identity","source":"uploaded ZIP: TanStack Start, React, Tailwind","outcome":"preserve","status":"inspected","next_action":"Import original source after presenting audit; retain target pinned framework versions."},
+    {"capability":"Database schema","source":"six tables and three migrations in two directories","outcome":"migrate","status":"pending","next_action":"Connect Lovable Cloud for isolated working copy; reconcile migration history before applying schema."},
+    {"capability":"Application records","source":"No record export included","outcome":"migrate","status":"pending","next_action":"Request filtered per-table CSV/JSON exports after preview; preserve original IDs and relationships."},
+    {"capability":"Auth identities and original director","source":"Supabase email/password auth and user_roles","outcome":"migrate","status":"pending","next_action":"Request user/profile/role exports; preserve original identity mapping and verify email ownership before access. No password or session transfer."},
+    {"capability":"Authorization","source":"has_role/admin_exists/claim_first_admin; admin-only RLS","outcome":"extend","status":"inspected","next_action":"Replace unrestricted bootstrap in working copy with protected director provisioning; add individual permissions and server enforcement."},
+    {"capability":"Bundled visual assets","source":"four branded JPG/PNG assets and icons","outcome":"preserve","status":"inspected","next_action":"Import original media through asset storage; retain founder silhouette."},
+    {"capability":"Uploaded file bytes","source":"announcement-images storage bucket referenced by code","outcome":"preserve","status":"pending","next_action":"Obtain storage object manifest and actual bytes; verify bucket exists, upload policies, signed URLs and ownership."},
+    {"capability":"External providers","source":"Google Fonts and configurable social/Discord links; authentication email provider settings not exported","outcome":"preserve","status":"partially_inspected","next_action":"Preserve compatible configured providers and links; verify mail configuration without requesting secret values in chat."},
+    {"capability":"Public endpoints","source":"public.functions.ts for settings, announcements and three forms","outcome":"preserve","status":"inspected","next_action":"Keep existing server function exports; verify public writes and private read isolation in working copy."},
+    {"capability":"Callbacks","source":"auth email redirects to /auth and /restablecer","outcome":"adapt","status":"pending","next_action":"Configure allowed working-copy callback URLs without changing production URLs."},
+    {"capability":"Webhooks and schedules","source":"cron-auth helper only; no concrete routes identified","outcome":"verify_absence","status":"pending","next_action":"Confirm any externally configured callers/jobs not represented in ZIP; preserve if present."},
+    {"capability":"Secrets and runtime configuration","source":"generated clients and configuration reference required variable names; .env excluded","outcome":"secure_configuration","status":"pending","next_action":"Use managed Cloud connection and secure secret forms if needed; never copy archived .env."},
+    {"capability":"Cutover","source":"Original GitHub repository and published website remain separate","outcome":"hold","status":"blocked","next_action":"No deployment or original repository changes without user authorization."},
+    {"capability":"Verification","source":"source test files and requested 25 security scenarios","outcome":"verify","status":"pending","next_action":"Run selective tests and real signed-in cross-account flows after connection; static inspection is not a passing runtime test."}
+  ]
+}
