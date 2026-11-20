@@ -10,33 +10,275 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AfiliacionRouteImport } from './routes/afiliacion'
+import { Route as AlianzasRouteImport } from './routes/alianzas'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as FilosofiaRouteImport } from './routes/filosofia'
+import { Route as FundadorRouteImport } from './routes/fundador'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
+import { Route as QuienesSomosRouteImport } from './routes/quienes-somos'
+import { Route as RestablecerRouteImport } from './routes/restablecer'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as ComunicadosIndexRouteImport } from './routes/comunicados.index'
+import { Route as ComunicadosIdRouteImport } from './routes/comunicados.$id'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminAlianzasRouteImport } from './routes/_authenticated/admin.alianzas'
+import { Route as AuthenticatedAdminComunicadosRouteImport } from './routes/_authenticated/admin.comunicados'
+import { Route as AuthenticatedAdminConfiguracionRouteImport } from './routes/_authenticated/admin.configuracion'
+import { Route as AuthenticatedAdminMensajesRouteImport } from './routes/_authenticated/admin.mensajes'
+import { Route as AuthenticatedAdminSolicitudesRouteImport } from './routes/_authenticated/admin.solicitudes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AfiliacionRoute = AfiliacionRouteImport.update({
+  id: '/afiliacion',
+  path: '/afiliacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlianzasRoute = AlianzasRouteImport.update({
+  id: '/alianzas',
+  path: '/alianzas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilosofiaRoute = FilosofiaRouteImport.update({
+  id: '/filosofia',
+  path: '/filosofia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FundadorRoute = FundadorRouteImport.update({
+  id: '/fundador',
+  path: '/fundador',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuienesSomosRoute = QuienesSomosRouteImport.update({
+  id: '/quienes-somos',
+  path: '/quienes-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestablecerRoute = RestablecerRouteImport.update({
+  id: '/restablecer',
+  path: '/restablecer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const ComunicadosIndexRoute = ComunicadosIndexRouteImport.update({
+  id: '/comunicados/',
+  path: '/comunicados/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComunicadosIdRoute = ComunicadosIdRouteImport.update({
+  id: '/comunicados/$id',
+  path: '/comunicados/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminAlianzasRoute =
+  AuthenticatedAdminAlianzasRouteImport.update({
+    id: '/alianzas',
+    path: '/alianzas',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminComunicadosRoute =
+  AuthenticatedAdminComunicadosRouteImport.update({
+    id: '/comunicados',
+    path: '/comunicados',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminConfiguracionRoute =
+  AuthenticatedAdminConfiguracionRouteImport.update({
+    id: '/configuracion',
+    path: '/configuracion',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminMensajesRoute =
+  AuthenticatedAdminMensajesRouteImport.update({
+    id: '/mensajes',
+    path: '/mensajes',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminSolicitudesRoute =
+  AuthenticatedAdminSolicitudesRouteImport.update({
+    id: '/solicitudes',
+    path: '/solicitudes',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/afiliacion': typeof AfiliacionRoute
+  '/alianzas': typeof AlianzasRoute
+  '/auth': typeof AuthRoute
+  '/contacto': typeof ContactoRoute
+  '/filosofia': typeof FilosofiaRoute
+  '/fundador': typeof FundadorRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/restablecer': typeof RestablecerRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/comunicados/$id': typeof ComunicadosIdRoute
+  '/comunicados/': typeof ComunicadosIndexRoute
+  '/admin/alianzas': typeof AuthenticatedAdminAlianzasRoute
+  '/admin/comunicados': typeof AuthenticatedAdminComunicadosRoute
+  '/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
+  '/admin/mensajes': typeof AuthenticatedAdminMensajesRoute
+  '/admin/solicitudes': typeof AuthenticatedAdminSolicitudesRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/afiliacion': typeof AfiliacionRoute
+  '/alianzas': typeof AlianzasRoute
+  '/auth': typeof AuthRoute
+  '/contacto': typeof ContactoRoute
+  '/filosofia': typeof FilosofiaRoute
+  '/fundador': typeof FundadorRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/restablecer': typeof RestablecerRoute
+  '/comunicados/$id': typeof ComunicadosIdRoute
+  '/comunicados': typeof ComunicadosIndexRoute
+  '/admin/alianzas': typeof AuthenticatedAdminAlianzasRoute
+  '/admin/comunicados': typeof AuthenticatedAdminComunicadosRoute
+  '/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
+  '/admin/mensajes': typeof AuthenticatedAdminMensajesRoute
+  '/admin/solicitudes': typeof AuthenticatedAdminSolicitudesRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/afiliacion': typeof AfiliacionRoute
+  '/alianzas': typeof AlianzasRoute
+  '/auth': typeof AuthRoute
+  '/contacto': typeof ContactoRoute
+  '/filosofia': typeof FilosofiaRoute
+  '/fundador': typeof FundadorRoute
+  '/privacidad': typeof PrivacidadRoute
+  '/quienes-somos': typeof QuienesSomosRoute
+  '/restablecer': typeof RestablecerRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/comunicados/$id': typeof ComunicadosIdRoute
+  '/comunicados/': typeof ComunicadosIndexRoute
+  '/_authenticated/admin/alianzas': typeof AuthenticatedAdminAlianzasRoute
+  '/_authenticated/admin/comunicados': typeof AuthenticatedAdminComunicadosRoute
+  '/_authenticated/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
+  '/_authenticated/admin/mensajes': typeof AuthenticatedAdminMensajesRoute
+  '/_authenticated/admin/solicitudes': typeof AuthenticatedAdminSolicitudesRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/afiliacion'
+    | '/alianzas'
+    | '/auth'
+    | '/contacto'
+    | '/filosofia'
+    | '/fundador'
+    | '/privacidad'
+    | '/quienes-somos'
+    | '/restablecer'
+    | '/admin'
+    | '/comunicados/$id'
+    | '/comunicados/'
+    | '/admin/alianzas'
+    | '/admin/comunicados'
+    | '/admin/configuracion'
+    | '/admin/mensajes'
+    | '/admin/solicitudes'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/afiliacion'
+    | '/alianzas'
+    | '/auth'
+    | '/contacto'
+    | '/filosofia'
+    | '/fundador'
+    | '/privacidad'
+    | '/quienes-somos'
+    | '/restablecer'
+    | '/comunicados/$id'
+    | '/comunicados'
+    | '/admin/alianzas'
+    | '/admin/comunicados'
+    | '/admin/configuracion'
+    | '/admin/mensajes'
+    | '/admin/solicitudes'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/afiliacion'
+    | '/alianzas'
+    | '/auth'
+    | '/contacto'
+    | '/filosofia'
+    | '/fundador'
+    | '/privacidad'
+    | '/quienes-somos'
+    | '/restablecer'
+    | '/_authenticated/admin'
+    | '/comunicados/$id'
+    | '/comunicados/'
+    | '/_authenticated/admin/alianzas'
+    | '/_authenticated/admin/comunicados'
+    | '/_authenticated/admin/configuracion'
+    | '/_authenticated/admin/mensajes'
+    | '/_authenticated/admin/solicitudes'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AfiliacionRoute: typeof AfiliacionRoute
+  AlianzasRoute: typeof AlianzasRoute
+  AuthRoute: typeof AuthRoute
+  ContactoRoute: typeof ContactoRoute
+  FilosofiaRoute: typeof FilosofiaRoute
+  FundadorRoute: typeof FundadorRoute
+  PrivacidadRoute: typeof PrivacidadRoute
+  QuienesSomosRoute: typeof QuienesSomosRoute
+  RestablecerRoute: typeof RestablecerRoute
+  ComunicadosIdRoute: typeof ComunicadosIdRoute
+  ComunicadosIndexRoute: typeof ComunicadosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +290,188 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/afiliacion': {
+      id: '/afiliacion'
+      path: '/afiliacion'
+      fullPath: '/afiliacion'
+      preLoaderRoute: typeof AfiliacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alianzas': {
+      id: '/alianzas'
+      path: '/alianzas'
+      fullPath: '/alianzas'
+      preLoaderRoute: typeof AlianzasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filosofia': {
+      id: '/filosofia'
+      path: '/filosofia'
+      fullPath: '/filosofia'
+      preLoaderRoute: typeof FilosofiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fundador': {
+      id: '/fundador'
+      path: '/fundador'
+      fullPath: '/fundador'
+      preLoaderRoute: typeof FundadorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quienes-somos': {
+      id: '/quienes-somos'
+      path: '/quienes-somos'
+      fullPath: '/quienes-somos'
+      preLoaderRoute: typeof QuienesSomosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restablecer': {
+      id: '/restablecer'
+      path: '/restablecer'
+      fullPath: '/restablecer'
+      preLoaderRoute: typeof RestablecerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/comunicados/': {
+      id: '/comunicados/'
+      path: '/comunicados'
+      fullPath: '/comunicados/'
+      preLoaderRoute: typeof ComunicadosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comunicados/$id': {
+      id: '/comunicados/$id'
+      path: '/comunicados/$id'
+      fullPath: '/comunicados/$id'
+      preLoaderRoute: typeof ComunicadosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/alianzas': {
+      id: '/_authenticated/admin/alianzas'
+      path: '/alianzas'
+      fullPath: '/admin/alianzas'
+      preLoaderRoute: typeof AuthenticatedAdminAlianzasRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/comunicados': {
+      id: '/_authenticated/admin/comunicados'
+      path: '/comunicados'
+      fullPath: '/admin/comunicados'
+      preLoaderRoute: typeof AuthenticatedAdminComunicadosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/configuracion': {
+      id: '/_authenticated/admin/configuracion'
+      path: '/configuracion'
+      fullPath: '/admin/configuracion'
+      preLoaderRoute: typeof AuthenticatedAdminConfiguracionRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/mensajes': {
+      id: '/_authenticated/admin/mensajes'
+      path: '/mensajes'
+      fullPath: '/admin/mensajes'
+      preLoaderRoute: typeof AuthenticatedAdminMensajesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/solicitudes': {
+      id: '/_authenticated/admin/solicitudes'
+      path: '/solicitudes'
+      fullPath: '/admin/solicitudes'
+      preLoaderRoute: typeof AuthenticatedAdminSolicitudesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAlianzasRoute: typeof AuthenticatedAdminAlianzasRoute
+  AuthenticatedAdminComunicadosRoute: typeof AuthenticatedAdminComunicadosRoute
+  AuthenticatedAdminConfiguracionRoute: typeof AuthenticatedAdminConfiguracionRoute
+  AuthenticatedAdminMensajesRoute: typeof AuthenticatedAdminMensajesRoute
+  AuthenticatedAdminSolicitudesRoute: typeof AuthenticatedAdminSolicitudesRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAlianzasRoute: AuthenticatedAdminAlianzasRoute,
+  AuthenticatedAdminComunicadosRoute: AuthenticatedAdminComunicadosRoute,
+  AuthenticatedAdminConfiguracionRoute: AuthenticatedAdminConfiguracionRoute,
+  AuthenticatedAdminMensajesRoute: AuthenticatedAdminMensajesRoute,
+  AuthenticatedAdminSolicitudesRoute: AuthenticatedAdminSolicitudesRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AfiliacionRoute: AfiliacionRoute,
+  AlianzasRoute: AlianzasRoute,
+  AuthRoute: AuthRoute,
+  ContactoRoute: ContactoRoute,
+  FilosofiaRoute: FilosofiaRoute,
+  FundadorRoute: FundadorRoute,
+  PrivacidadRoute: PrivacidadRoute,
+  QuienesSomosRoute: QuienesSomosRoute,
+  RestablecerRoute: RestablecerRoute,
+  ComunicadosIdRoute: ComunicadosIdRoute,
+  ComunicadosIndexRoute: ComunicadosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

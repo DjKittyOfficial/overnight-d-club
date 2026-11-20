@@ -1,0 +1,13 @@
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
+
+// Session lives in browser storage, so the gate runs client-side only.
+export const Route = createFileRoute("/_authenticated")({
+  ssr: false,
+  beforeLoad: async ({ location }) => {
+    const { data } = await supabase.auth.getUser();
+    if (!data.user) throw redirect({ to: "/auth", search: { redirect: location.href } as never });
+    return { user: data.user };
+  },
+  component: () => <Outlet />,
+});
