@@ -1,5 +1,5 @@
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
-import { Loader2, ShieldAlert } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import { LogoEmblem } from "@/components/brand/Logo";
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
 });
 
-type Mode = "login" | "forgot" | "setup";
+type Mode = "login" | "forgot";
 
 const creds = z.object({
   email: z.string().trim().email("Introduce un correo válido"),
@@ -37,7 +37,6 @@ const creds = z.object({
 });
 
 function AuthPage() {
-  const { adminExists } = Route.useLoaderData();
   const navigate = useNavigate();
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
@@ -79,32 +78,12 @@ function AuthPage() {
       navigate({ to: "/admin", replace: true });
       return;
     }
-    // setup: first director account
-    const { data, error } = await supabase.auth.signUp({
-      ...r.data,
-      options: { emailRedirectTo: `${window.location.origin}/auth` },
-    });
-    if (error) {
-      setBusy(false);
-      return setMsg({ kind: "err", text: error.message.includes("registered") ? "Ese correo ya tiene cuenta. Inicia sesión." : "No se pudo crear la cuenta." });
-    }
-    if (data.session) {
-      await supabase.rpc("claim_first_admin");
-      setBusy(false);
-      navigate({ to: "/admin", replace: true });
-      return;
-    }
-    setBusy(false);
-    setMsg({
-      kind: "ok",
-      text: "Cuenta creada. Confirma tu correo con el enlace recibido y vuelve aquí para iniciar sesión; después podrás activar el acceso de dirección.",
-    });
+
   }
 
   const titles: Record<Mode, string> = {
     login: "Acceso de la dirección",
     forgot: "Recuperar contraseña",
-    setup: "Configuración inicial",
   };
 
   return (
@@ -114,12 +93,6 @@ function AuthPage() {
         <LogoEmblem className="mx-auto size-20 animate-pulse-neon" eager />
         <p className="font-hud mt-6 text-center text-[0.6rem] text-neon-soft">Terminal restringida</p>
         <h1 className="mt-2 text-center font-display text-2xl font-bold uppercase text-frost">{titles[mode]}</h1>
-        {mode === "setup" && (
-          <p className="mt-3 flex gap-2 text-sm text-steel">
-            <ShieldAlert className="mt-0.5 size-4 shrink-0 text-warning" />
-            Aún no hay ninguna cuenta de dirección. La primera cuenta creada recibirá el acceso de administración.
-          </p>
-        )}
         <form onSubmit={submit} noValidate className="mt-8 space-y-5">
           <TextField id="email" label="Correo electrónico" type="email" autoComplete="email" value={email} onChange={setEmail} error={errors["email"]} />
           {mode !== "forgot" && (
@@ -127,7 +100,7 @@ function AuthPage() {
               id="password"
               label="Contraseña"
               type="password"
-              autoComplete={mode === "setup" ? "new-password" : "current-password"}
+              autoComplete="current-password"
               value={password}
               onChange={setPassword}
               error={errors["password"]}
@@ -140,7 +113,7 @@ function AuthPage() {
           )}
           <Button type="submit" variant="neon" size="lg" className="w-full" disabled={busy}>
             {busy && <Loader2 className="animate-spin" />}
-            {mode === "login" ? "Iniciar sesión" : mode === "forgot" ? "Enviar enlace" : "Crear cuenta de dirección"}
+            {mode === "login" ? "Iniciar sesión" : "Enviar enlace"}
           </Button>
         </form>
         <div className="mt-6 flex flex-col items-center gap-2">
@@ -150,9 +123,7 @@ function AuthPage() {
           {mode === "login" && (
             <Button variant="quiet" onClick={() => { setMode("forgot"); setMsg(null); }}>¿Has olvidado la contraseña?</Button>
           )}
-          {mode === "login" && !adminExists && (
-            <Button variant="quiet" onClick={() => { setMode("setup"); setMsg(null); }}>Configuración inicial de la dirección</Button>
-          )}
+
         </div>
       </div>
     </section>
