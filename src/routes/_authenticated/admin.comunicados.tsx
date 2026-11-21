@@ -18,6 +18,15 @@ import { formatDate } from "@/lib/format";
 import { announcementSchema, fieldErrors } from "@/lib/schemas";
 
 export const Route = createFileRoute("/_authenticated/admin/comunicados")({
+  head: () => ({ meta: [
+    { title: "Administración de comunicados — OverNight D Club" },
+    { name: "description", content: "Administración de comunicados en el panel privado de OverNight D Club." },
+    { property: "og:title", content: "Administración de comunicados — OverNight D Club" },
+    { property: "og:description", content: "Administración de comunicados en el panel privado de OverNight D Club." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
   component: AnnouncementsAdmin,
 });
 

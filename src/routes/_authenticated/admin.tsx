@@ -12,6 +12,8 @@ export const Route = createFileRoute("/_authenticated/admin")({
       { name: "description", content: "Panel privado de administración de OverNight D Club." },
       { property: "og:title", content: "Panel de la dirección — OverNight D Club" },
       { property: "og:description", content: "Panel privado de administración." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),

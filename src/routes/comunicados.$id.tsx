@@ -24,7 +24,7 @@ export const Route = createFileRoute("/comunicados/$id")({
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
     ];
-    return { meta };
+    return { meta: [...meta, ...(loaderData.image?.startsWith("https://") ? [{ property: "og:image", content: loaderData.image }, { name: "twitter:image", content: loaderData.image }] : [])] };
   },
   notFoundComponent: () => (
     <div className="mx-auto max-w-3xl px-4 pt-40 pb-24 text-center">

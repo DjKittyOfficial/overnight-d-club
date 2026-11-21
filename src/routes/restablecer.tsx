@@ -14,6 +14,8 @@ export const Route = createFileRoute("/restablecer")({
       { name: "description", content: "Define una nueva contraseña para tu cuenta de dirección." },
       { property: "og:title", content: "Restablecer contraseña — OverNight D Club" },
       { property: "og:description", content: "Define una nueva contraseña para tu cuenta de dirección." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),

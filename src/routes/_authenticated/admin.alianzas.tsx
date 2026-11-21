@@ -23,6 +23,15 @@ const config: RecordsConfig = {
 };
 
 export const Route = createFileRoute("/_authenticated/admin/alianzas")({
+  head: () => ({ meta: [
+    { title: "Administración de alianzas — OverNight D Club" },
+    { name: "description", content: "Administración de alianzas en el panel privado de OverNight D Club." },
+    { property: "og:title", content: "Administración de alianzas — OverNight D Club" },
+    { property: "og:description", content: "Administración de alianzas en el panel privado de OverNight D Club." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
   component: () => (
     <>
       <AdminTitle code="AL" title="Propuestas de alianza" />

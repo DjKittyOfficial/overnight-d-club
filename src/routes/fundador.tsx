@@ -16,6 +16,8 @@ export const Route = createFileRoute("/fundador")({
       { property: "og:description", content: "Fundador de OverNight D Club. Identidad visual protegida." },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: founderImg },
+      { name: "twitter:image", content: founderImg },
     ],
   }),
   component: Founder,

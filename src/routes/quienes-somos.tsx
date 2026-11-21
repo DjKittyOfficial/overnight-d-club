@@ -15,6 +15,8 @@ export const Route = createFileRoute("/quienes-somos")({
       { property: "og:description", content: "Identidad, propósito y pertenencia en OverNight D Club." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: heroImg },
+      { name: "twitter:image", content: heroImg },
     ],
   }),
   component: About,

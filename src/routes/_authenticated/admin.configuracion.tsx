@@ -14,6 +14,15 @@ import { supabase } from "@/integrations/supabase/client";
 import { isSafeUrl, SETTING_KEYS, type SettingKey, type SiteSettings } from "@/lib/schemas";
 
 export const Route = createFileRoute("/_authenticated/admin/configuracion")({
+  head: () => ({ meta: [
+    { title: "Configuración de dirección — OverNight D Club" },
+    { name: "description", content: "Configuración de dirección en el panel privado de OverNight D Club." },
+    { property: "og:title", content: "Configuración de dirección — OverNight D Club" },
+    { property: "og:description", content: "Configuración de dirección en el panel privado de OverNight D Club." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
   component: SettingsPage,
 });
 

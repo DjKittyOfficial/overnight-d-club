@@ -24,6 +24,15 @@ const config: RecordsConfig = {
 };
 
 export const Route = createFileRoute("/_authenticated/admin/solicitudes")({
+  head: () => ({ meta: [
+    { title: "Administración de solicitudes — OverNight D Club" },
+    { name: "description", content: "Administración de solicitudes en el panel privado de OverNight D Club." },
+    { property: "og:title", content: "Administración de solicitudes — OverNight D Club" },
+    { property: "og:description", content: "Administración de solicitudes en el panel privado de OverNight D Club." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
   component: () => (
     <>
       <AdminTitle code="AF" title="Solicitudes de afiliación" />
