@@ -34,3 +34,6 @@ use the editor.
 - Extend the audited archive's existing TanStack application rather than introducing a second app; this preserves existing routes and production capabilities.
 - Track each imported capability and its verification in the migration ledger; missing data and external configuration must not be mistaken for completed functionality.
 - Keep the target's pinned TanStack packages when merging dependencies; generated routing and hosted runtime depend on the target's compatible versions.
+- Use only integration-managed clients for the independently provisioned backend; never import archive environment or project connection files, preventing production traffic.
+- Retain the original role table but omit public first-admin claiming in the isolated schema; director provisioning requires a verified original identity.
+- Preserve original migration SQL as reference rather than executing both archive histories; the independent backend has its own applied Drizzle history.

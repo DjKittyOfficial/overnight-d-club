@@ -14,7 +14,15 @@ export const Route = createFileRoute("/comunicados/$id")({
     return a;
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Comunicado no disponible — OverNight D Club" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData) return { meta: [
+      { title: "Comunicado no disponible — OverNight D Club" },
+      { name: "description", content: "El comunicado solicitado no está disponible en OverNight D Club." },
+      { property: "og:title", content: "Comunicado no disponible — OverNight D Club" },
+      { property: "og:description", content: "El comunicado solicitado no está disponible." },
+      { property: "og:type", content: "article" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "noindex" },
+    ] };
     const desc = (loaderData.excerpt || loaderData.content).slice(0, 155);
     const meta = [
       { title: `${loaderData.title} — OverNight D Club` },

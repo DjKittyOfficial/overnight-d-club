@@ -18,11 +18,8 @@ export const Route = createFileRoute("/_authenticated/admin")({
     ],
   }),
   beforeLoad: async ({ context }) => {
-    const [{ data: isAdmin }, { data: adminExists }] = await Promise.all([
-      supabase.rpc("has_role", { _user_id: context.user.id, _role: "admin" }),
-      supabase.rpc("admin_exists"),
-    ]);
-    return { isAdmin: isAdmin === true, adminExists: adminExists !== false };
+    const { data: isAdmin } = await supabase.rpc("has_role", { _user_id: context.user.id, _role: "admin" });
+    return { isAdmin: isAdmin === true };
   },
   pendingComponent: () => (
     <div className="flex min-h-screen items-center justify-center">

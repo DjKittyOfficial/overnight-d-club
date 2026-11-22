@@ -1,0 +1,6 @@
+create or replace function public.has_role(_user_id uuid,_role public.app_role) returns boolean language sql stable security definer set search_path=public as $$ select (auth.uid() is not null and _user_id=auth.uid()) and exists(select 1 from public.user_roles where user_id=_user_id and role=_role) $$;
+revoke execute on function public.admin_exists() from anon,authenticated;
+create policy "Admins upload announcement images" on storage.objects for insert to authenticated with check(bucket_id='announcement-images' and public.has_role(auth.uid(),'admin'));
+create policy "Admins update announcement images" on storage.objects for update to authenticated using(bucket_id='announcement-images' and public.has_role(auth.uid(),'admin')) with check(bucket_id='announcement-images' and public.has_role(auth.uid(),'admin'));
+create policy "Admins delete announcement images" on storage.objects for delete to authenticated using(bucket_id='announcement-images' and public.has_role(auth.uid(),'admin'));
+create policy "Read images of published announcements" on storage.objects for select to anon,authenticated using(bucket_id='announcement-images' and (public.has_role(auth.uid(),'admin') or exists(select 1 from public.announcements a where a.image_url=storage.objects.name and a.published=true)));

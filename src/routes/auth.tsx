@@ -24,10 +24,6 @@ export const Route = createFileRoute("/auth")({
     const { data } = await supabase.auth.getSession();
     if (data.session) throw redirect({ to: "/admin" });
   },
-  loader: async () => {
-    const { data } = await supabase.rpc("admin_exists");
-    return { adminExists: data !== false };
-  },
   component: AuthPage,
 });
 

@@ -2,10 +2,12 @@
 
 - [x] Auditar el ZIP sin ejecutar código importado y documentar funciones, riesgos y requisitos.
 - [x] Presentar auditoría y acordar continuación segura en la copia de trabajo.
-- [ ] Aislar por completo conexiones y pruebas de producción; documentar servicios de la copia.
-- [ ] Documentar antes de importar datos el alcance, exclusiones, recuperación del director e integridad.
-- [ ] Importar fielmente páginas, panel, componentes y recursos originales.
-- [ ] Conectar Lovable Cloud y ampliar esquema/autorización sin afectar al original.
+- [x] Aislar conexiones de producción; documentar servicios independientes y comprobar bloqueo de registro público.
+- [x] Documentar antes de importar datos el alcance, exclusiones, recuperación del director e integridad.
+- [x] Importar páginas, panel, componentes y recursos originales; comprobar páginas públicas y contacto real.
+- [x] Conectar Lovable Cloud independiente y crear las seis tablas y almacenamiento privado sin datos originales.
+- [ ] Verificar el panel original con sesión y operaciones administrativas — bloqueado: creación de cuenta de prueba rechazada; faltan identidades originales.
+- [ ] Ampliar esquema/autorización individuales — siguiente fase, requiere pruebas con cuentas autorizadas.
 - [ ] Ampliar accesos y personal, rangos independientes y permisos individuales.
 - [ ] Añadir auditoría inalterable, responsables y notas por autor al panel existente.
 - [ ] Profundizar la sección del fundador con hechos existentes y conservar la silueta.

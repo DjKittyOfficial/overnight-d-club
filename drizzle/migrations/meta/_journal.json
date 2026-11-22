@@ -8,6 +8,13 @@
       "when": 1795220184089,
       "tag": "0000_overnight_isolated_core",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795315581954,
+      "tag": "0001_overnight_isolated_storage_and_role_lookup",
+      "breakpoints": true
     }
   ]
 }

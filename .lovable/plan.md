@@ -18,7 +18,7 @@ La inspección ha sido estática: todavía no se ha importado la aplicación a l
 ## Qué se ampliará
 
 1. Importar fielmente la aplicación original, sus páginas, imágenes, estilos y panel, sin rediseñar ni crear otra aplicación.
-2. Preparar Lovable Cloud para esta copia de trabajo. Conservar los servicios externos compatibles y mantener producción intacta.
+2. Preparar Lovable Cloud completamente independiente para esta copia de trabajo. No sustituir, desconectar ni modificar ningún servicio de producción.
 3. Ampliar la pantalla existente con acceso de dirección y miembros, correo o usuario, recuperación y cambio obligatorio de contraseña inicial.
 4. Añadir gestión de personal al mismo panel: cuatro rangos editables, estado de cuenta y permisos individuales independientes del rango.
 5. Proteger cada operación, la identidad del director, los cambios de permisos, la suspensión y la revocación de acceso.
@@ -29,7 +29,7 @@ La inspección ha sido estática: todavía no se ha importado la aplicación a l
 
 ## Usuarios y datos existentes
 
-La base y los usuarios se trasladarán a Lovable Cloud para esta copia, preservando perfiles, propiedad y datos mediante identidades verificadas. En su primera visita, los usuarios verificarán su correo y elegirán una nueva contraseña; las antiguas contraseñas y sesiones no se trasladan. No se modificarán las credenciales del sitio original.
+Antes de cualquier importación de datos se presentará el inventario concreto, inclusiones, exclusiones y comprobaciones de integridad. Solo se copiarán registros a Lovable Cloud independiente, preservando perfiles, propiedad y datos mediante identidades verificadas. En su primera visita a la copia, los usuarios verificarán su correo y elegirán una nueva contraseña; las antiguas contraseñas y sesiones no se trasladan. No se modificarán las credenciales ni los servicios del sitio original.
 
 Se continuará con código y esquema aunque falten exportaciones. Los registros y usuarios originales quedarán pendientes hasta recibir sus exportaciones; las imágenes subidas requieren también sus archivos. No se considerará preservada o probada la cuenta original del director sin esas comprobaciones.
 
@@ -44,4 +44,4 @@ Se continuará con código y esquema aunque falten exportaciones. Los registros 
 
 ## Límites de esta entrega
 
-Esta entrega es la auditoría previa: la ampliación aún no está implementada. La aplicación original solo está en la copia temporal de inspección y la vista previa sigue sin importarla. El siguiente paso es ejecutar este plan sobre la copia de trabajo, no sobre producción.
+Primera fase ejecutada: aplicación original importada, servicios independientes y esquema vacío preparados. Pruebas públicas y de aislamiento realizadas; informe en la revisión de aislamiento. La gestión avanzada de personal no está implementada. El panel con sesión y el director original siguen sin verificarse: la cuenta de prueba propuesta no fue autorizada y no se han recibido exportaciones de identidades. No se publicarán cambios ni se modificará producción.

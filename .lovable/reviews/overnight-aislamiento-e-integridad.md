@@ -24,4 +24,17 @@ La contraseña de producción sigue intacta. En la copia, el director iniciará 
 
 ## Estado
 
-Servicios independientes creados; código en importación; esquema de pruebas por preparar. No se han importado datos ni usuarios originales. Gestión avanzada de personal, permisos, auditoría, notas y asignaciones son fases pendientes.
+Servicios independientes creados; páginas y panel originales importados; seis tablas de prueba creadas con seguridad por filas. Se creó almacenamiento privado de imágenes con formatos JPG/PNG/WEBP y límite de 5 MB, separado del original. No se han importado datos ni usuarios originales. Gestión avanzada de personal, permisos, auditoría, notas y asignaciones son fases pendientes.
+
+## Pruebas realmente ejecutadas de la primera fase
+
+- 10 pruebas automatizadas superadas: seis originales de validación/rutas y cuatro de aislamiento contra la conexión independiente.
+- Once páginas públicas/de acceso renderizadas en navegador sin errores de ejecución detectados; portada e imágenes principales verificadas en escritorio y móvil, sin desbordamiento horizontal móvil.
+- Acceso a `/admin` sin sesión redirige al acceso de dirección. Credenciales incorrectas rechazadas.
+- Mensaje de contacto enviado desde el formulario: éxito observado en pantalla y mismo mensaje leído posteriormente en la base de la copia.
+- Consulta anónima de mensajes privados devuelve cero filas, comprobada mientras existía el mensaje de prueba. No se permite reclamar al primer director: la operación no existe. Registro público desactivado, comprobado mediante configuración real del servicio.
+- Las seis tablas tienen seguridad por filas activada. La consulta pública de existencia de dirección se bloquea. La consulta de roles solo puede devolver el rol propio de una identidad autenticada.
+- Las advertencias del analizador sobre funciones de consulta privilegiadas requieren interpretación: `has_role` permanece invocable para evaluar las políticas públicas, pero el usuario consultado debe coincidir con la sesión validada. No se concede ni modifica ningún rol desde esa función.
+- Se eliminará exclusivamente el mensaje temporal creado por estas pruebas tras verificarlo, nunca un registro original.
+
+**No probado:** acceso real del director o miembros, panel con sesión, operaciones administrativas, ciclo completo de correo/recuperación y carga real de imágenes. La creación de la cuenta de prueba propuesta fue rechazada; no se creó una cuenta por otra vía. No hay usuarios reales importados. Esas comprobaciones siguen pendientes y no se declara la actualización terminada.
