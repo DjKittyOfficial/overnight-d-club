@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
@@ -6,6 +6,7 @@ import { LogoEmblem } from "@/components/brand/Logo";
 import { TextField } from "@/components/forms/Fields";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { initialRegistrationOpen } from "@/lib/access.functions";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
@@ -21,9 +22,10 @@ export const Route = createFileRoute("/auth")({
     ],
   }),
   beforeLoad: async () => {
-    const { data } = await supabase.auth.getSession();
-    if (data.session) throw redirect({ to: "/admin" });
+    const { data } = await supabase.auth.getUser();
+    if (data.user) throw redirect({ to: "/admin" });
   },
+  loader: () => initialRegistrationOpen(),
   component: AuthPage,
 });
 
@@ -35,6 +37,7 @@ const creds = z.object({
 });
 
 function AuthPage() {
+  const registrationOpen = Route.useLoaderData();
   const navigate = useNavigate();
   const [mode, setMode] = useState<Mode>("login");
   const [email, setEmail] = useState("");
@@ -115,6 +118,9 @@ function AuthPage() {
           </Button>
         </form>
         <div className="mt-6 flex flex-col items-center gap-2">
+          {registrationOpen && mode === "login" && (
+            <Button asChild variant="hud"><Link to="/registro-inicial">Crear cuenta Director</Link></Button>
+          )}
           {mode !== "login" && (
             <Button variant="quiet" onClick={() => { setMode("login"); setMsg(null); }}>Volver al inicio de sesión</Button>
           )}

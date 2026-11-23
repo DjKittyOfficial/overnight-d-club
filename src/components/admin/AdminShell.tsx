@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { ExternalLink, Handshake, LayoutDashboard, LogOut, Mail, Megaphone, Settings, UserPlus } from "lucide-react";
+import { ExternalLink, Handshake, LayoutDashboard, LogOut, Mail, Megaphone, Settings, UserPlus, Users } from "lucide-react";
 import type { ReactNode } from "react";
 import { SpiderMark, Wordmark } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,7 @@ export const ADMIN_NAV = [
   { to: "/admin/mensajes", label: "Mensajes", icon: Mail, exact: false },
   { to: "/admin/comunicados", label: "Comunicados", icon: Megaphone, exact: false },
   { to: "/admin/configuracion", label: "Configuración", icon: Settings, exact: false },
+  { to: "/admin/usuarios", label: "Usuarios", icon: Users, exact: false },
 ] as const;
 
 export function useSignOut() {

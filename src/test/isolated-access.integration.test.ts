@@ -16,10 +16,13 @@ async function request(path: string, method = "GET", body?: unknown) {
 }
 
 suite("Isolated backend access rules", () => {
-  it("does not permit public staff signup", async () => {
+  it("enables only the guarded initial signup entry point", async () => {
     const response = await request("/auth/v1/settings");
     expect(response.status).toBe(200);
-    expect((await response.json()).disable_signup).toBe(true);
+    expect((await response.json()).disable_signup).toBe(false);
+    const state = await request("/rest/v1/rpc/initial_registration_open", "POST", {});
+    expect(state.status).toBe(200);
+    expect(await state.json()).toBe(true);
   });
 
   it("does not expose private contact messages to a visitor", async () => {

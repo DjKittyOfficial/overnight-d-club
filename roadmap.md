@@ -6,7 +6,8 @@
 - [x] Documentar antes de importar datos el alcance, exclusiones, recuperación del director e integridad.
 - [x] Importar páginas, panel, componentes y recursos originales; comprobar páginas públicas y contacto real.
 - [x] Conectar Lovable Cloud independiente y crear las seis tablas y almacenamiento privado sin datos originales.
-- [ ] Verificar el panel original con sesión y operaciones administrativas — bloqueado: creación de cuenta de prueba rechazada; faltan identidades originales.
+- [ ] Preparar registro inicial único Director, cierre definitivo, limpieza de cuentas de prueba y gestión de usuarios, sin crear credenciales del usuario.
+- [ ] Verificar el panel original con sesión y operaciones administrativas — pendiente del registro personal del Director; no crear cuentas sin autorización.
 - [ ] Ampliar esquema/autorización individuales — siguiente fase, requiere pruebas con cuentas autorizadas.
 - [ ] Ampliar accesos y personal, rangos independientes y permisos individuales.
 - [ ] Añadir auditoría inalterable, responsables y notas por autor al panel existente.

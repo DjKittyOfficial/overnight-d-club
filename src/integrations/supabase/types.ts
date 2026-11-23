@@ -203,6 +203,21 @@ export type Database = {
         }
         Relationships: []
       }
+      director_registration: {
+        Row: {
+          closed_at: string
+          singleton: boolean
+        }
+        Insert: {
+          closed_at?: string
+          singleton?: boolean
+        }
+        Update: {
+          closed_at?: string
+          singleton?: boolean
+        }
+        Relationships: []
+      }
       site_settings: {
         Row: {
           key: string
@@ -218,6 +233,24 @@ export type Database = {
           key?: string
           updated_at?: string
           value?: string
+        }
+        Relationships: []
+      }
+      staff_registration_permits: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
         }
         Relationships: []
       }
@@ -255,6 +288,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      initial_registration_open: { Args: never; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "moderator"

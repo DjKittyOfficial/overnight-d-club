@@ -35,5 +35,6 @@ use the editor.
 - Track each imported capability and its verification in the migration ledger; missing data and external configuration must not be mistaken for completed functionality.
 - Keep the target's pinned TanStack packages when merging dependencies; generated routing and hosted runtime depend on the target's compatible versions.
 - Use only integration-managed clients for the independently provisioned backend; never import archive environment or project connection files, preventing production traffic.
-- Retain the original role table but omit public first-admin claiming in the isolated schema; director provisioning requires a verified original identity.
+- Retain the original role table; initial Director signup is serialized by a database lifecycle trigger and permanent closure latch, with a unique Director index. Never expose role claiming or reopen signup after account deletion.
+- User management uses authenticated server functions with a caller-scoped admin role check before loading privileged clients; managed invitations use one-time database permits instead of trusting client metadata.
 - Preserve original migration SQL as reference rather than executing both archive histories; the independent backend has its own applied Drizzle history.

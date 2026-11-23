@@ -15,6 +15,13 @@
       "when": 1795315581954,
       "tag": "0001_overnight_isolated_storage_and_role_lookup",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795393432386,
+      "tag": "0002_single_director_initial_registration",
+      "breakpoints": true
     }
   ]
 }

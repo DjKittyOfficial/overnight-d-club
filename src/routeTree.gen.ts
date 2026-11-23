@@ -19,6 +19,7 @@ import { Route as FilosofiaRouteImport } from './routes/filosofia'
 import { Route as FundadorRouteImport } from './routes/fundador'
 import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as QuienesSomosRouteImport } from './routes/quienes-somos'
+import { Route as RegistroInicialRouteImport } from './routes/registro-inicial'
 import { Route as RestablecerRouteImport } from './routes/restablecer'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ComunicadosIndexRouteImport } from './routes/comunicados.index'
@@ -29,6 +30,7 @@ import { Route as AuthenticatedAdminComunicadosRouteImport } from './routes/_aut
 import { Route as AuthenticatedAdminConfiguracionRouteImport } from './routes/_authenticated/admin.configuracion'
 import { Route as AuthenticatedAdminMensajesRouteImport } from './routes/_authenticated/admin.mensajes'
 import { Route as AuthenticatedAdminSolicitudesRouteImport } from './routes/_authenticated/admin.solicitudes'
+import { Route as AuthenticatedAdminUsuariosRouteImport } from './routes/_authenticated/admin.usuarios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -77,6 +79,11 @@ const PrivacidadRoute = PrivacidadRouteImport.update({
 const QuienesSomosRoute = QuienesSomosRouteImport.update({
   id: '/quienes-somos',
   path: '/quienes-somos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegistroInicialRoute = RegistroInicialRouteImport.update({
+  id: '/registro-inicial',
+  path: '/registro-inicial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RestablecerRoute = RestablecerRouteImport.update({
@@ -134,6 +141,12 @@ const AuthenticatedAdminSolicitudesRoute =
     path: '/solicitudes',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminUsuariosRoute =
+  AuthenticatedAdminUsuariosRouteImport.update({
+    id: '/usuarios',
+    path: '/usuarios',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/fundador': typeof FundadorRoute
   '/privacidad': typeof PrivacidadRoute
   '/quienes-somos': typeof QuienesSomosRoute
+  '/registro-inicial': typeof RegistroInicialRoute
   '/restablecer': typeof RestablecerRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/comunicados/$id': typeof ComunicadosIdRoute
@@ -154,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
   '/admin/mensajes': typeof AuthenticatedAdminMensajesRoute
   '/admin/solicitudes': typeof AuthenticatedAdminSolicitudesRoute
+  '/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -166,6 +181,7 @@ export interface FileRoutesByTo {
   '/fundador': typeof FundadorRoute
   '/privacidad': typeof PrivacidadRoute
   '/quienes-somos': typeof QuienesSomosRoute
+  '/registro-inicial': typeof RegistroInicialRoute
   '/restablecer': typeof RestablecerRoute
   '/comunicados/$id': typeof ComunicadosIdRoute
   '/comunicados': typeof ComunicadosIndexRoute
@@ -174,6 +190,7 @@ export interface FileRoutesByTo {
   '/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
   '/admin/mensajes': typeof AuthenticatedAdminMensajesRoute
   '/admin/solicitudes': typeof AuthenticatedAdminSolicitudesRoute
+  '/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -188,6 +205,7 @@ export interface FileRoutesById {
   '/fundador': typeof FundadorRoute
   '/privacidad': typeof PrivacidadRoute
   '/quienes-somos': typeof QuienesSomosRoute
+  '/registro-inicial': typeof RegistroInicialRoute
   '/restablecer': typeof RestablecerRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/comunicados/$id': typeof ComunicadosIdRoute
@@ -197,6 +215,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/configuracion': typeof AuthenticatedAdminConfiguracionRoute
   '/_authenticated/admin/mensajes': typeof AuthenticatedAdminMensajesRoute
   '/_authenticated/admin/solicitudes': typeof AuthenticatedAdminSolicitudesRoute
+  '/_authenticated/admin/usuarios': typeof AuthenticatedAdminUsuariosRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -211,6 +230,7 @@ export interface FileRouteTypes {
     | '/fundador'
     | '/privacidad'
     | '/quienes-somos'
+    | '/registro-inicial'
     | '/restablecer'
     | '/admin'
     | '/comunicados/$id'
@@ -220,6 +240,7 @@ export interface FileRouteTypes {
     | '/admin/configuracion'
     | '/admin/mensajes'
     | '/admin/solicitudes'
+    | '/admin/usuarios'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -232,6 +253,7 @@ export interface FileRouteTypes {
     | '/fundador'
     | '/privacidad'
     | '/quienes-somos'
+    | '/registro-inicial'
     | '/restablecer'
     | '/comunicados/$id'
     | '/comunicados'
@@ -240,6 +262,7 @@ export interface FileRouteTypes {
     | '/admin/configuracion'
     | '/admin/mensajes'
     | '/admin/solicitudes'
+    | '/admin/usuarios'
     | '/admin'
   id:
     | '__root__'
@@ -253,6 +276,7 @@ export interface FileRouteTypes {
     | '/fundador'
     | '/privacidad'
     | '/quienes-somos'
+    | '/registro-inicial'
     | '/restablecer'
     | '/_authenticated/admin'
     | '/comunicados/$id'
@@ -262,6 +286,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/configuracion'
     | '/_authenticated/admin/mensajes'
     | '/_authenticated/admin/solicitudes'
+    | '/_authenticated/admin/usuarios'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -276,6 +301,7 @@ export interface RootRouteChildren {
   FundadorRoute: typeof FundadorRoute
   PrivacidadRoute: typeof PrivacidadRoute
   QuienesSomosRoute: typeof QuienesSomosRoute
+  RegistroInicialRoute: typeof RegistroInicialRoute
   RestablecerRoute: typeof RestablecerRoute
   ComunicadosIdRoute: typeof ComunicadosIdRoute
   ComunicadosIndexRoute: typeof ComunicadosIndexRoute
@@ -353,6 +379,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuienesSomosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/registro-inicial': {
+      id: '/registro-inicial'
+      path: '/registro-inicial'
+      fullPath: '/registro-inicial'
+      preLoaderRoute: typeof RegistroInicialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/restablecer': {
       id: '/restablecer'
       path: '/restablecer'
@@ -423,6 +456,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminSolicitudesRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/usuarios': {
+      id: '/_authenticated/admin/usuarios'
+      path: '/usuarios'
+      fullPath: '/admin/usuarios'
+      preLoaderRoute: typeof AuthenticatedAdminUsuariosRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
@@ -432,6 +472,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminConfiguracionRoute: typeof AuthenticatedAdminConfiguracionRoute
   AuthenticatedAdminMensajesRoute: typeof AuthenticatedAdminMensajesRoute
   AuthenticatedAdminSolicitudesRoute: typeof AuthenticatedAdminSolicitudesRoute
+  AuthenticatedAdminUsuariosRoute: typeof AuthenticatedAdminUsuariosRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
@@ -441,6 +482,7 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminConfiguracionRoute: AuthenticatedAdminConfiguracionRoute,
   AuthenticatedAdminMensajesRoute: AuthenticatedAdminMensajesRoute,
   AuthenticatedAdminSolicitudesRoute: AuthenticatedAdminSolicitudesRoute,
+  AuthenticatedAdminUsuariosRoute: AuthenticatedAdminUsuariosRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
@@ -469,6 +511,7 @@ const rootRouteChildren: RootRouteChildren = {
   FundadorRoute: FundadorRoute,
   PrivacidadRoute: PrivacidadRoute,
   QuienesSomosRoute: QuienesSomosRoute,
+  RegistroInicialRoute: RegistroInicialRoute,
   RestablecerRoute: RestablecerRoute,
   ComunicadosIdRoute: ComunicadosIdRoute,
   ComunicadosIndexRoute: ComunicadosIndexRoute,
